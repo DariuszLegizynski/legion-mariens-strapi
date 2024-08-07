@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_layouts",
+  "info": {
+    "singularName": "main-layout",
+    "pluralName": "main-layouts",
+    "displayName": "Main Layout",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "dynamiczone",
+      "components": [
+        "images.three-columns-images"
+      ]
+    }
+  }
+}

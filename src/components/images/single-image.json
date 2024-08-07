@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_images_single_images",
+  "info": {
+    "displayName": "singleImage",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

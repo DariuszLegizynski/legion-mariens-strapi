@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_navigation_categories",
+  "info": {
+    "displayName": "mainWithSubCategory",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "linkName": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "maxLength": 255
+    },
+    "subCategory": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.sub-category",
+      "required": false
+    },
+    "linkPath": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "maxLength": 255
+    }
+  }
+}

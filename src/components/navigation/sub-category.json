@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_navigation_sub_categories",
+  "info": {
+    "displayName": "mainCategory",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "linkName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255,
+      "unique": false
+    },
+    "linkPath": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255,
+      "unique": false
+    }
+  }
+}
