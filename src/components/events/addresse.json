@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_content_addresses",
+  "info": {
+    "displayName": "contact data",
+    "icon": "house",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "number": {
+      "type": "integer"
+    },
+    "city": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "country": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "organiser": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "contactPerson": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "shortDescription": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "addressAddition": {
+      "type": "string",
+      "maxLength": 255
+    }
+  }
+}

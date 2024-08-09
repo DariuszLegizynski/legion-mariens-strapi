@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_events_categories",
+  "info": {
+    "displayName": "Categories",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "categories": {
+      "type": "enumeration",
+      "enum": [
+        "Alle Kategorien",
+        "Anbetung",
+        "Bibelrunde",
+        "Einkehrtag",
+        "Exerzitien",
+        "Fest",
+        "Gebet",
+        "Jugend",
+        "Kongress",
+        "Messe",
+        "Patrizierrunde",
+        "Radiosendung",
+        "Schukungstag",
+        "Treffen",
+        "Wallfahrt",
+        "Weiterbildung"
+      ],
+      "default": "Alle Kategorien"
+    }
+  }
+}

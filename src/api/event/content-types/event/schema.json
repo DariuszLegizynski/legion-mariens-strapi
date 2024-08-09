@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "startTime": {
+      "type": "datetime"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "events"
+    },
+    "endTime": {
+      "type": "datetime"
+    },
+    "arrival": {
+      "displayName": "addresse",
+      "type": "component",
+      "repeatable": false,
+      "component": "events.addresse"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.description"
+    }
+  }
+}
