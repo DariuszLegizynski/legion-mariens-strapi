@@ -16,18 +16,6 @@
       "type": "component",
       "repeatable": false,
       "component": "content.title-text"
-    },
-    "category": {
-      "type": "component",
-      "repeatable": false,
-      "component": "events.categories"
-    },
-    "startDate": {
-      "type": "datetime",
-      "required": true
-    },
-    "endDate": {
-      "type": "datetime"
     }
   }
 }

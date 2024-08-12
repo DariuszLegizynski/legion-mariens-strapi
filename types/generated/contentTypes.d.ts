@@ -982,9 +982,6 @@ export interface ApiTermineTermine extends Schema.SingleType {
   };
   attributes: {
     content: Attribute.Component<'content.title-text'>;
-    category: Attribute.Component<'events.categories'>;
-    startDate: Attribute.DateTime & Attribute.Required;
-    endDate: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
