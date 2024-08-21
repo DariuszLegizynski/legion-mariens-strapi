@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "spiritualitaet_gebetes",
+  "info": {
+    "singularName": "spiritualitaet-gebete",
+    "pluralName": "spiritualitaet-gebetes",
+    "displayName": "spiritualitaet_gebete",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "content": {
+      "displayName": "wrapper",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.wrapper"
+    }
+  }
+}

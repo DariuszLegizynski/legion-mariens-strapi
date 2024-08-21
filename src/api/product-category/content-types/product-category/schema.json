@@ -14,7 +14,7 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "products": {
@@ -22,6 +22,9 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "product_category"
+    },
+    "iconType": {
+      "type": "string"
     }
   }
 }

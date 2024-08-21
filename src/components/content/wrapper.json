@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_wrappers",
+  "info": {
+    "displayName": "wrapper",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.img-title-pdf"
+    }
+  }
+}

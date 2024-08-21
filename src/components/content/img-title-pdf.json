@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_content_img_title_pdfs",
+  "info": {
+    "displayName": "ImgTitlePDF",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "prayerCategory": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::prayer-category.prayer-category"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

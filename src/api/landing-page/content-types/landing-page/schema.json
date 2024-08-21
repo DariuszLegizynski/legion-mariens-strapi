@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "introduction": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.image-with-text"
-    },
     "about": {
       "type": "component",
       "repeatable": false,
@@ -26,6 +21,12 @@
       "type": "component",
       "repeatable": false,
       "component": "content.title-text"
+    },
+    "introduction": {
+      "displayName": "introduction",
+      "type": "component",
+      "repeatable": false,
+      "component": "content.introduction"
     }
   }
 }

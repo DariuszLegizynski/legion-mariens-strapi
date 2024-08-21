@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "presidiums",
+  "info": {
+    "singularName": "presidium",
+    "pluralName": "presidiums",
+    "displayName": "Presidium"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "parish": {
+      "type": "string",
+      "required": true
+    },
+    "diocese": {
+      "type": "string",
+      "required": true
+    },
+    "contact_person": {
+      "type": "string",
+      "required": true
+    },
+    "datum": {
+      "type": "date"
+    },
+    "time": {
+      "type": "time"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}

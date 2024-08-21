@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "unsere_spiritualitaets",
+  "info": {
+    "singularName": "unsere-spiritualitaet",
+    "pluralName": "unsere-spiritualitaets",
+    "displayName": "unsere-spiritualitaet"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.title-text"
+      ]
+    }
+  }
+}

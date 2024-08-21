@@ -21,9 +21,6 @@
       "type": "decimal",
       "required": true
     },
-    "description": {
-      "type": "text"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -50,6 +47,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "user_cart": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-cart.user-cart",
+      "inversedBy": "product"
     }
   }
 }

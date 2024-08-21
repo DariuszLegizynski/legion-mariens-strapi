@@ -917,9 +917,9 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    introduction: Attribute.Component<'content.image-with-text'>;
     about: Attribute.Component<'content.title-text'>;
     termine: Attribute.Component<'content.title-text'>;
+    introduction: Attribute.Component<'content.introduction'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -969,6 +969,108 @@ export interface ApiMainLayoutMainLayout extends Schema.SingleType {
   };
 }
 
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    session_id: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    surname: Attribute.String & Attribute.Required;
+    phone: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    payment_Id: Attribute.String & Attribute.Required;
+    orderItemList: Attribute.Component<'order.ordered-item', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrayerCategoryPrayerCategory extends Schema.CollectionType {
+  collectionName: 'prayer_categories';
+  info: {
+    singularName: 'prayer-category';
+    pluralName: 'prayer-categories';
+    displayName: 'Prayer-Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::prayer-category.prayer-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::prayer-category.prayer-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPresidiumPresidium extends Schema.CollectionType {
+  collectionName: 'presidiums';
+  info: {
+    singularName: 'presidium';
+    pluralName: 'presidiums';
+    displayName: 'Presidium';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    parish: Attribute.String & Attribute.Required;
+    diocese: Attribute.String & Attribute.Required;
+    contact_person: Attribute.String & Attribute.Required;
+    datum: Attribute.Date;
+    time: Attribute.Time;
+    email: Attribute.Email;
+    phone: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::presidium.presidium',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::presidium.presidium',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -987,7 +1089,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
         maxLength: 255;
       }>;
     price: Attribute.Decimal & Attribute.Required;
-    description: Attribute.Text;
     image: Attribute.Media<'images'>;
     product_category: Attribute.Relation<
       'api::product.product',
@@ -997,6 +1098,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
     quantity: Attribute.Integer;
     article_code: Attribute.String & Attribute.Required & Attribute.Unique;
+    user_cart: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::user-cart.user-cart'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1028,12 +1134,13 @@ export interface ApiProductCategoryProductCategory
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    name: Attribute.String & Attribute.Unique;
     products: Attribute.Relation<
       'api::product-category.product-category',
       'oneToMany',
       'api::product.product'
     >;
+    iconType: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1045,6 +1152,39 @@ export interface ApiProductCategoryProductCategory
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product-category.product-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSpiritualitaetGebeteSpiritualitaetGebete
+  extends Schema.SingleType {
+  collectionName: 'spiritualitaet_gebetes';
+  info: {
+    singularName: 'spiritualitaet-gebete';
+    pluralName: 'spiritualitaet-gebetes';
+    displayName: 'spiritualitaet_gebete';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Component<'content.wrapper', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::spiritualitaet-gebete.spiritualitaet-gebete',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::spiritualitaet-gebete.spiritualitaet-gebete',
       'oneToOne',
       'admin::user'
     > &
@@ -1083,6 +1223,76 @@ export interface ApiTermineTermine extends Schema.SingleType {
   };
 }
 
+export interface ApiUnsereSpiritualitaetUnsereSpiritualitaet
+  extends Schema.SingleType {
+  collectionName: 'unsere_spiritualitaets';
+  info: {
+    singularName: 'unsere-spiritualitaet';
+    pluralName: 'unsere-spiritualitaets';
+    displayName: 'unsere-spiritualitaet';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.DynamicZone<['content.title-text']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::unsere-spiritualitaet.unsere-spiritualitaet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::unsere-spiritualitaet.unsere-spiritualitaet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserCartUserCart extends Schema.CollectionType {
+  collectionName: 'user_carts';
+  info: {
+    singularName: 'user-cart';
+    pluralName: 'user-carts';
+    displayName: 'User Cart';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    quantity: Attribute.Integer;
+    amount: Attribute.Integer;
+    product: Attribute.Relation<
+      'api::user-cart.user-cart',
+      'oneToMany',
+      'api::product.product'
+    >;
+    session_id: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-cart.user-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-cart.user-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1106,9 +1316,15 @@ declare module '@strapi/types' {
       'api::header.header': ApiHeaderHeader;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::main-layout.main-layout': ApiMainLayoutMainLayout;
+      'api::order.order': ApiOrderOrder;
+      'api::prayer-category.prayer-category': ApiPrayerCategoryPrayerCategory;
+      'api::presidium.presidium': ApiPresidiumPresidium;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
+      'api::spiritualitaet-gebete.spiritualitaet-gebete': ApiSpiritualitaetGebeteSpiritualitaetGebete;
       'api::termine.termine': ApiTermineTermine;
+      'api::unsere-spiritualitaet.unsere-spiritualitaet': ApiUnsereSpiritualitaetUnsereSpiritualitaet;
+      'api::user-cart.user-cart': ApiUserCartUserCart;
     }
   }
 }

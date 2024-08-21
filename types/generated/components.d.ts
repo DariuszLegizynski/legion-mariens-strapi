@@ -1,5 +1,22 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface OrderOrderedItem extends Schema.Component {
+  collectionName: 'components_order_ordered_items';
+  info: {
+    displayName: 'OrderedItem';
+    icon: 'cup';
+  };
+  attributes: {
+    amount: Attribute.Integer;
+    price: Attribute.Decimal;
+    product: Attribute.Relation<
+      'order.ordered-item',
+      'oneToOne',
+      'api::product.product'
+    >;
+  };
+}
+
 export interface NavigationSubCategory extends Schema.Component {
   collectionName: 'components_navigation_sub_categories';
   info: {
@@ -168,6 +185,17 @@ export interface EventsAddresse extends Schema.Component {
   };
 }
 
+export interface ContentWrapper extends Schema.Component {
+  collectionName: 'components_content_wrappers';
+  info: {
+    displayName: 'wrapper';
+    icon: 'bulletList';
+  };
+  attributes: {
+    content: Attribute.Component<'content.img-title-pdf', true>;
+  };
+}
+
 export interface ContentTitleText extends Schema.Component {
   collectionName: 'components_content_title_texts';
   info: {
@@ -185,27 +213,43 @@ export interface ContentTitleText extends Schema.Component {
   };
 }
 
-export interface ContentImageWithText extends Schema.Component {
-  collectionName: 'components_content_image_with_texts';
+export interface ContentIntroduction extends Schema.Component {
+  collectionName: 'components_content_introductions';
   info: {
-    displayName: 'ImageWithText';
+    displayName: 'introduction';
+    icon: 'emotionHappy';
+  };
+  attributes: {
+    avatar: Attribute.Media<'images'>;
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.Blocks;
+  };
+}
+
+export interface ContentImgTitlePdf extends Schema.Component {
+  collectionName: 'components_content_img_title_pdfs';
+  info: {
+    displayName: 'ImgTitlePDF';
     icon: 'dashboard';
     description: '';
   };
   attributes: {
-    avatar: Attribute.Media<'images'> & Attribute.Required;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    content: Attribute.Blocks & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    prayerCategory: Attribute.Relation<
+      'content.img-title-pdf',
+      'oneToOne',
+      'api::prayer-category.prayer-category'
+    >;
+    content: Attribute.Blocks;
+    pdf: Attribute.Media<'files'>;
+    image: Attribute.Media<'images'>;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'order.ordered-item': OrderOrderedItem;
       'navigation.sub-category': NavigationSubCategory;
       'navigation.category': NavigationCategory;
       'images.three-columns-images': ImagesThreeColumnsImages;
@@ -214,8 +258,10 @@ declare module '@strapi/types' {
       'events.description': EventsDescription;
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
+      'content.wrapper': ContentWrapper;
       'content.title-text': ContentTitleText;
-      'content.image-with-text': ContentImageWithText;
+      'content.introduction': ContentIntroduction;
+      'content.img-title-pdf': ContentImgTitlePdf;
     }
   }
 }
