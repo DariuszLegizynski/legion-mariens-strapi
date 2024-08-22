@@ -4,7 +4,8 @@
   "info": {
     "singularName": "presidium",
     "pluralName": "presidiums",
-    "displayName": "Presidium"
+    "displayName": "Presidium",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,9 +24,6 @@
       "type": "string",
       "required": true
     },
-    "datum": {
-      "type": "date"
-    },
     "time": {
       "type": "time"
     },
@@ -34,6 +32,42 @@
     },
     "phone": {
       "type": "string"
+    },
+    "location": {
+      "type": "customField",
+      "customField": "plugin::google-maps.location-picker"
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "day": {
+      "type": "enumeration",
+      "enum": [
+        "Sonntag",
+        "Montag",
+        "Dienstag",
+        "Mittwoch",
+        "Donnerstag",
+        "Freitag",
+        "Samstag"
+      ],
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "mappedBy": "presidium"
     }
   }
 }

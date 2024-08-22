@@ -31,6 +31,9 @@
     },
     "price": {
       "type": "decimal"
+    },
+    "expiration_date": {
+      "type": "datetime"
     }
   }
 }

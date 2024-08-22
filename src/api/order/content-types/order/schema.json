@@ -4,17 +4,14 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "session_id": {
-      "type": "string",
-      "required": true
-    },
     "name": {
       "type": "string",
       "required": true
@@ -31,14 +28,16 @@
       "type": "email",
       "required": true
     },
-    "payment_Id": {
-      "type": "string",
-      "required": true
-    },
     "orderItemList": {
       "type": "component",
       "repeatable": true,
       "component": "order.ordered-item"
+    },
+    "presidium": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::presidium.presidium",
+      "inversedBy": "order"
     }
   }
 }
