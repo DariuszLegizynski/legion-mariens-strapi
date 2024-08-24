@@ -912,6 +912,37 @@ export interface ApiEventEvent extends Schema.CollectionType {
   };
 }
 
+export interface ApiGroupsInAustriaGroupsInAustria extends Schema.SingleType {
+  collectionName: 'groups_in_austrias';
+  info: {
+    singularName: 'groups-in-austria';
+    pluralName: 'groups-in-austrias';
+    displayName: 'groups in austria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.Component<'content.title-text'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::groups-in-austria.groups-in-austria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::groups-in-austria.groups-in-austria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHeaderHeader extends Schema.SingleType {
   collectionName: 'headers';
   info: {
@@ -1381,6 +1412,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
+      'api::groups-in-austria.groups-in-austria': ApiGroupsInAustriaGroupsInAustria;
       'api::header.header': ApiHeaderHeader;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::main-layout.main-layout': ApiMainLayoutMainLayout;

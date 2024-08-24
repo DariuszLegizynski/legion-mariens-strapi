@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "groups_in_austrias",
+  "info": {
+    "singularName": "groups-in-austria",
+    "pluralName": "groups-in-austrias",
+    "displayName": "groups in austria",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.title-text"
+    }
+  }
+}
