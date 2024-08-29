@@ -62,12 +62,6 @@
     "city": {
       "type": "string",
       "required": true
-    },
-    "order": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::order.order",
-      "mappedBy": "presidium"
     }
   }
 }

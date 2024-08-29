@@ -33,11 +33,20 @@
       "repeatable": true,
       "component": "order.ordered-item"
     },
-    "presidium": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::presidium.presidium",
-      "inversedBy": "order"
+    "address": {
+      "type": "string"
+    },
+    "place": {
+      "type": "string"
+    },
+    "legion": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "land": {
+      "type": "string"
     }
   }
 }

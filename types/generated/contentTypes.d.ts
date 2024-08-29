@@ -1057,11 +1057,11 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     phone: Attribute.String & Attribute.Required;
     email: Attribute.Email & Attribute.Required;
     orderItemList: Attribute.Component<'order.ordered-item', true>;
-    presidium: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'api::presidium.presidium'
-    >;
+    address: Attribute.String;
+    place: Attribute.String;
+    legion: Attribute.String;
+    zip: Attribute.String;
+    land: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1145,11 +1145,6 @@ export interface ApiPresidiumPresidium extends Schema.CollectionType {
     > &
       Attribute.Required;
     city: Attribute.String & Attribute.Required;
-    order: Attribute.Relation<
-      'api::presidium.presidium',
-      'oneToOne',
-      'api::order.order'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
