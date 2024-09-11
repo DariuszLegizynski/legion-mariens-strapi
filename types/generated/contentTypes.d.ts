@@ -847,7 +847,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       }>;
     events: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToMany',
       'api::event.event'
     >;
     createdAt: Attribute.DateTime;
@@ -886,14 +886,29 @@ export interface ApiEventEvent extends Schema.CollectionType {
         maxLength: 255;
       }>;
     startTime: Attribute.DateTime;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::event.event',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     endTime: Attribute.DateTime;
     arrival: Attribute.Component<'events.addresse'>;
     description: Attribute.Component<'events.description'>;
+    repeat: Attribute.Component<'events.cycle-event'>;
+    state: Attribute.Enumeration<
+      [
+        'Burgenland',
+        'Wien',
+        'Nieder\u00F6sterreich',
+        'Ober\u00F6sterreich',
+        'Steiermark',
+        'K\u00E4rnten',
+        'Salzburg',
+        'Tirol',
+        'Vorarlberg'
+      ]
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1145,6 +1160,8 @@ export interface ApiPresidiumPresidium extends Schema.CollectionType {
     > &
       Attribute.Required;
     city: Attribute.String & Attribute.Required;
+    category: Attribute.String;
+    notes: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

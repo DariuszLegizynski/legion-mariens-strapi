@@ -20,9 +20,9 @@
     "startTime": {
       "type": "datetime"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "events"
     },
@@ -39,6 +39,26 @@
       "type": "component",
       "repeatable": false,
       "component": "events.description"
+    },
+    "repeat": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.cycle-event"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "Burgenland",
+        "Wien",
+        "Niederösterreich",
+        "Oberösterreich",
+        "Steiermark",
+        "Kärnten",
+        "Salzburg",
+        "Tirol",
+        "Vorarlberg"
+      ],
+      "required": true
     }
   }
 }

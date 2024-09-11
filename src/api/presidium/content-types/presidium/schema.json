@@ -62,6 +62,12 @@
     "city": {
       "type": "string",
       "required": true
+    },
+    "category": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
     }
   }
 }

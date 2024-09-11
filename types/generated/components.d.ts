@@ -110,6 +110,21 @@ export interface EventsDescription extends Schema.Component {
   };
 }
 
+export interface EventsCycleEvent extends Schema.Component {
+  collectionName: 'components_events_cycle_events';
+  info: {
+    displayName: 'cycle event';
+    icon: 'clock';
+    description: '';
+  };
+  attributes: {
+    isRecurring: Attribute.Boolean & Attribute.DefaultTo<false>;
+    recurrenceType: Attribute.Enumeration<['weekly', 'monthly', 'yearly']>;
+    recurrenceEndDate: Attribute.Date;
+    isMonthlyPilgrimage: Attribute.Boolean & Attribute.DefaultTo<false>;
+  };
+}
+
 export interface EventsCategories extends Schema.Component {
   collectionName: 'components_events_categories';
   info: {
@@ -256,6 +271,7 @@ declare module '@strapi/types' {
       'images.three-column-images': ImagesThreeColumnImages;
       'images.single-image': ImagesSingleImage;
       'events.description': EventsDescription;
+      'events.cycle-event': EventsCycleEvent;
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
       'content.wrapper': ContentWrapper;

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_events_cycle_events",
+  "info": {
+    "displayName": "cycle event",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "isRecurring": {
+      "type": "boolean",
+      "default": false
+    },
+    "recurrenceType": {
+      "type": "enumeration",
+      "enum": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "recurrenceEndDate": {
+      "type": "date"
+    },
+    "isMonthlyPilgrimage": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
