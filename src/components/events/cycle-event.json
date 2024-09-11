@@ -21,10 +21,6 @@
     },
     "recurrenceEndDate": {
       "type": "date"
-    },
-    "isMonthlyPilgrimage": {
-      "type": "boolean",
-      "default": false
     }
   }
 }

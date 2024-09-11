@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_states",
+  "info": {
+    "singularName": "event-state",
+    "pluralName": "event-states",
+    "displayName": "Event-State",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "state": {
+      "type": "string"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "event_state"
+    }
+  }
+}

@@ -45,20 +45,17 @@
       "repeatable": false,
       "component": "events.cycle-event"
     },
-    "state": {
-      "type": "enumeration",
-      "enum": [
-        "Burgenland",
-        "Wien",
-        "Niederösterreich",
-        "Oberösterreich",
-        "Steiermark",
-        "Kärnten",
-        "Salzburg",
-        "Tirol",
-        "Vorarlberg"
-      ],
-      "required": true
+    "event_assignment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event-assignment.event-assignment",
+      "inversedBy": "events"
+    },
+    "event_state": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event-state.event-state",
+      "inversedBy": "events"
     }
   }
 }

@@ -895,20 +895,16 @@ export interface ApiEventEvent extends Schema.CollectionType {
     arrival: Attribute.Component<'events.addresse'>;
     description: Attribute.Component<'events.description'>;
     repeat: Attribute.Component<'events.cycle-event'>;
-    state: Attribute.Enumeration<
-      [
-        'Burgenland',
-        'Wien',
-        'Nieder\u00F6sterreich',
-        'Ober\u00F6sterreich',
-        'Steiermark',
-        'K\u00E4rnten',
-        'Salzburg',
-        'Tirol',
-        'Vorarlberg'
-      ]
-    > &
-      Attribute.Required;
+    event_assignment: Attribute.Relation<
+      'api::event.event',
+      'manyToOne',
+      'api::event-assignment.event-assignment'
+    >;
+    event_state: Attribute.Relation<
+      'api::event.event',
+      'manyToOne',
+      'api::event-state.event-state'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -920,6 +916,78 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEventAssignmentEventAssignment
+  extends Schema.CollectionType {
+  collectionName: 'event_assignments';
+  info: {
+    singularName: 'event-assignment';
+    pluralName: 'event-assignments';
+    displayName: 'Event-Assignment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    assignment: Attribute.String;
+    events: Attribute.Relation<
+      'api::event-assignment.event-assignment',
+      'oneToMany',
+      'api::event.event'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event-assignment.event-assignment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event-assignment.event-assignment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEventStateEventState extends Schema.CollectionType {
+  collectionName: 'event_states';
+  info: {
+    singularName: 'event-state';
+    pluralName: 'event-states';
+    displayName: 'Event-State';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    state: Attribute.String;
+    events: Attribute.Relation<
+      'api::event-state.event-state',
+      'oneToMany',
+      'api::event.event'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event-state.event-state',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event-state.event-state',
       'oneToOne',
       'admin::user'
     > &
@@ -1424,6 +1492,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
+      'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
+      'api::event-state.event-state': ApiEventStateEventState;
       'api::groups-in-austria.groups-in-austria': ApiGroupsInAustriaGroupsInAustria;
       'api::header.header': ApiHeaderHeader;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
