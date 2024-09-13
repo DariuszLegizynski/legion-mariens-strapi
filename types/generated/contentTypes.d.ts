@@ -905,6 +905,11 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'manyToOne',
       'api::event-state.event-state'
     >;
+    event_exceptions: Attribute.Relation<
+      'api::event.event',
+      'oneToMany',
+      'api::event-exception.event-exception'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -930,12 +935,13 @@ export interface ApiEventAssignmentEventAssignment
     singularName: 'event-assignment';
     pluralName: 'event-assignments';
     displayName: 'Event-Assignment';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    assignment: Attribute.String;
+    name: Attribute.String;
     events: Attribute.Relation<
       'api::event-assignment.event-assignment',
       'oneToMany',
@@ -959,6 +965,48 @@ export interface ApiEventAssignmentEventAssignment
   };
 }
 
+export interface ApiEventExceptionEventException extends Schema.CollectionType {
+  collectionName: 'event_exceptions';
+  info: {
+    singularName: 'event-exception';
+    pluralName: 'event-exceptions';
+    displayName: 'Event-Exception';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    exceptionDate: Attribute.Date;
+    newStartDate: Attribute.DateTime;
+    newEndDate: Attribute.DateTime;
+    uid: Attribute.UID;
+    event: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'manyToOne',
+      'api::event.event'
+    >;
+    isExcluded: Attribute.Boolean & Attribute.DefaultTo<false>;
+    newEventData: Attribute.Component<'events.addresse'>;
+    newDescription: Attribute.Component<'events.description'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEventStateEventState extends Schema.CollectionType {
   collectionName: 'event_states';
   info: {
@@ -971,7 +1019,7 @@ export interface ApiEventStateEventState extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    state: Attribute.String;
+    name: Attribute.String;
     events: Attribute.Relation<
       'api::event-state.event-state',
       'oneToMany',
@@ -1493,6 +1541,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
       'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
+      'api::event-exception.event-exception': ApiEventExceptionEventException;
       'api::event-state.event-state': ApiEventStateEventState;
       'api::groups-in-austria.groups-in-austria': ApiGroupsInAustriaGroupsInAustria;
       'api::header.header': ApiHeaderHeader;

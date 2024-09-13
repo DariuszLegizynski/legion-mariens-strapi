@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_exceptions",
+  "info": {
+    "singularName": "event-exception",
+    "pluralName": "event-exceptions",
+    "displayName": "Event-Exception",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "exceptionDate": {
+      "type": "date"
+    },
+    "newStartDate": {
+      "type": "datetime"
+    },
+    "newEndDate": {
+      "type": "datetime"
+    },
+    "uid": {
+      "type": "uid"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "event_exceptions"
+    },
+    "isExcluded": {
+      "type": "boolean",
+      "default": false
+    },
+    "newEventData": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.addresse"
+    },
+    "newDescription": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.description"
+    }
+  }
+}

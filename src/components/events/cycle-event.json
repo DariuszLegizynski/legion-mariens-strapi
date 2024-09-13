@@ -7,10 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "isRecurring": {
-      "type": "boolean",
-      "default": false
-    },
     "recurrenceType": {
       "type": "enumeration",
       "enum": [

@@ -56,6 +56,12 @@
       "relation": "manyToOne",
       "target": "api::event-state.event-state",
       "inversedBy": "events"
+    },
+    "event_exceptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-exception.event-exception",
+      "mappedBy": "event"
     }
   }
 }

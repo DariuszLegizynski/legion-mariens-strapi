@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "state": {
+    "name": {
       "type": "string"
     },
     "events": {
