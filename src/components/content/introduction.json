@@ -1,17 +1,19 @@
 {
   "collectionName": "components_content_introductions",
   "info": {
-    "displayName": "introduction",
-    "icon": "emotionHappy"
+    "displayName": "TitleImageContent",
+    "icon": "emotionHappy",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "avatar": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "title": {
       "type": "string",

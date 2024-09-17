@@ -1458,6 +1458,37 @@ export interface ApiSpiritualitaetGebeteSpiritualitaetGebete
   };
 }
 
+export interface ApiSpiritualitaetLegionImageSpiritualitaetLegionImage
+  extends Schema.SingleType {
+  collectionName: 'spiritualitaet_legion_images';
+  info: {
+    singularName: 'spiritualitaet-legion-image';
+    pluralName: 'spiritualitaet-legion-images';
+    displayName: 'Spiritualitaet-legion-image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    legion_image: Attribute.Component<'content.introduction'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::spiritualitaet-legion-image.spiritualitaet-legion-image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::spiritualitaet-legion-image.spiritualitaet-legion-image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSpiritualitaetMariaSpiritualitaetMaria
   extends Schema.SingleType {
   collectionName: 'spiritualitaet_marias';
@@ -1661,6 +1692,7 @@ declare module '@strapi/types' {
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::spiritualitaet-ganzhingabe-jesus-durch-maria.spiritualitaet-ganzhingabe-jesus-durch-maria': ApiSpiritualitaetGanzhingabeJesusDurchMariaSpiritualitaetGanzhingabeJesusDurchMaria;
       'api::spiritualitaet-gebete.spiritualitaet-gebete': ApiSpiritualitaetGebeteSpiritualitaetGebete;
+      'api::spiritualitaet-legion-image.spiritualitaet-legion-image': ApiSpiritualitaetLegionImageSpiritualitaetLegionImage;
       'api::spiritualitaet-maria.spiritualitaet-maria': ApiSpiritualitaetMariaSpiritualitaetMaria;
       'api::spiritualitaet-weihe-an-maria-und-33-schritte.spiritualitaet-weihe-an-maria-und-33-schritte': ApiSpiritualitaetWeiheAnMariaUnd33SchritteSpiritualitaetWeiheAnMariaUnd33Schritte;
       'api::termine.termine': ApiTermineTermine;

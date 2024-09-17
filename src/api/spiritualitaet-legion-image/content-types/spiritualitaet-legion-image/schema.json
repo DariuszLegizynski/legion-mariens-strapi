@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "spiritualitaet_legion_images",
+  "info": {
+    "singularName": "spiritualitaet-legion-image",
+    "pluralName": "spiritualitaet-legion-images",
+    "displayName": "Spiritualitaet-legion-image"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "legion_image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.introduction"
+    }
+  }
+}

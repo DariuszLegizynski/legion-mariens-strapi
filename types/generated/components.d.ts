@@ -254,11 +254,12 @@ export interface ContentLinks extends Schema.Component {
 export interface ContentIntroduction extends Schema.Component {
   collectionName: 'components_content_introductions';
   info: {
-    displayName: 'introduction';
+    displayName: 'TitleImageContent';
     icon: 'emotionHappy';
+    description: '';
   };
   attributes: {
-    avatar: Attribute.Media<'images'>;
+    image: Attribute.Media<'images'>;
     title: Attribute.String & Attribute.Required;
     content: Attribute.Blocks;
   };
