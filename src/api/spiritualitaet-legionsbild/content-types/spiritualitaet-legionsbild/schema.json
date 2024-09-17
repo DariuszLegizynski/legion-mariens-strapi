@@ -1,10 +1,11 @@
 {
   "kind": "singleType",
-  "collectionName": "spiritualitaet_legion_images",
+  "collectionName": "spiritualitaet_legionsbilds",
   "info": {
-    "singularName": "spiritualitaet-legion-image",
-    "pluralName": "spiritualitaet-legion-images",
-    "displayName": "Spiritualitaet-legion-image"
+    "singularName": "spiritualitaet-legionsbild",
+    "pluralName": "spiritualitaet-legionsbilds",
+    "displayName": "Spiritualitaet-legionsbild",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
