@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "apostolats",
+  "info": {
+    "singularName": "apostolat",
+    "pluralName": "apostolats",
+    "displayName": "apostolat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "apostolat": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.title-text"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.links"
+    },
+    "titleLinks": {
+      "type": "string"
+    }
+  }
+}

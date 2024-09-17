@@ -828,6 +828,39 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiApostolatApostolat extends Schema.SingleType {
+  collectionName: 'apostolats';
+  info: {
+    singularName: 'apostolat';
+    pluralName: 'apostolats';
+    displayName: 'apostolat';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    apostolat: Attribute.Component<'content.title-text'>;
+    links: Attribute.Component<'content.links', true>;
+    titleLinks: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::apostolat.apostolat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::apostolat.apostolat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -1677,6 +1710,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::apostolat.apostolat': ApiApostolatApostolat;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
       'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
