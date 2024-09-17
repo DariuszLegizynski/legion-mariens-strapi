@@ -201,11 +201,23 @@ export interface EventsAddresse extends Schema.Component {
 export interface ContentWrapper extends Schema.Component {
   collectionName: 'components_content_wrappers';
   info: {
-    displayName: 'wrapper';
+    displayName: 'prayer';
     icon: 'bulletList';
+    description: '';
   };
   attributes: {
     content: Attribute.Component<'content.img-title-pdf', true>;
+  };
+}
+
+export interface ContentTitle extends Schema.Component {
+  collectionName: 'components_content_titles';
+  info: {
+    displayName: 'title';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
   };
 }
 
@@ -226,6 +238,19 @@ export interface ContentTitleText extends Schema.Component {
   };
 }
 
+export interface ContentLinks extends Schema.Component {
+  collectionName: 'components_content_links';
+  info: {
+    displayName: 'textPDF';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    pdf: Attribute.Media<'files'>;
+  };
+}
+
 export interface ContentIntroduction extends Schema.Component {
   collectionName: 'components_content_introductions';
   info: {
@@ -242,7 +267,7 @@ export interface ContentIntroduction extends Schema.Component {
 export interface ContentImgTitlePdf extends Schema.Component {
   collectionName: 'components_content_img_title_pdfs';
   info: {
-    displayName: 'ImgTitlePDF';
+    displayName: 'PrayerImgTitlePDF';
     icon: 'dashboard';
     description: '';
   };
@@ -256,6 +281,19 @@ export interface ContentImgTitlePdf extends Schema.Component {
     content: Attribute.Blocks;
     pdf: Attribute.Media<'files'>;
     image: Attribute.Media<'images'>;
+  };
+}
+
+export interface ContentImgPdfTitle extends Schema.Component {
+  collectionName: 'components_content_img_pdf_titles';
+  info: {
+    displayName: 'ImgPdfTitle';
+    icon: 'server';
+  };
+  attributes: {
+    cover: Attribute.Media<'images' | 'videos'>;
+    pdf: Attribute.Media<'files'>;
+    title: Attribute.String;
   };
 }
 
@@ -273,9 +311,12 @@ declare module '@strapi/types' {
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
       'content.wrapper': ContentWrapper;
+      'content.title': ContentTitle;
       'content.title-text': ContentTitleText;
+      'content.links': ContentLinks;
       'content.introduction': ContentIntroduction;
       'content.img-title-pdf': ContentImgTitlePdf;
+      'content.img-pdf-title': ContentImgPdfTitle;
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_content_links",
+  "info": {
+    "displayName": "textPDF",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

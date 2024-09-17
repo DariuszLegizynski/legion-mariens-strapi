@@ -910,6 +910,15 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'oneToMany',
       'api::event-exception.event-exception'
     >;
+    participantRestriction: Attribute.Enumeration<
+      [
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Legion\u00E4re',
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Hilfslegion\u00E4re',
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Legion\u00E4re und Hilfslegion\u00E4re',
+        'Diese Veranstaltung ist f\u00FCr alle'
+      ]
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -980,7 +989,6 @@ export interface ApiEventExceptionEventException extends Schema.CollectionType {
     exceptionDate: Attribute.Date;
     newStartDate: Attribute.DateTime;
     newEndDate: Attribute.DateTime;
-    uid: Attribute.UID;
     event: Attribute.Relation<
       'api::event-exception.event-exception',
       'manyToOne',
@@ -1384,13 +1392,46 @@ export interface ApiProductCategoryProductCategory
   };
 }
 
+export interface ApiSpiritualitaetGanzhingabeJesusDurchMariaSpiritualitaetGanzhingabeJesusDurchMaria
+  extends Schema.SingleType {
+  collectionName: 'spiritualitaet_ganzhingabe_jesus_durch_marias';
+  info: {
+    singularName: 'spiritualitaet-ganzhingabe-jesus-durch-maria';
+    pluralName: 'spiritualitaet-ganzhingabe-jesus-durch-marias';
+    displayName: 'spiritualitaet-ganzhingabe-jesus-durch-maria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    dedication: Attribute.Component<'content.title-text', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::spiritualitaet-ganzhingabe-jesus-durch-maria.spiritualitaet-ganzhingabe-jesus-durch-maria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::spiritualitaet-ganzhingabe-jesus-durch-maria.spiritualitaet-ganzhingabe-jesus-durch-maria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSpiritualitaetGebeteSpiritualitaetGebete
   extends Schema.SingleType {
   collectionName: 'spiritualitaet_gebetes';
   info: {
     singularName: 'spiritualitaet-gebete';
     pluralName: 'spiritualitaet-gebetes';
-    displayName: 'spiritualitaet_gebete';
+    displayName: 'spiritualitaet-gebete';
     description: '';
   };
   options: {
@@ -1410,6 +1451,72 @@ export interface ApiSpiritualitaetGebeteSpiritualitaetGebete
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::spiritualitaet-gebete.spiritualitaet-gebete',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSpiritualitaetMariaSpiritualitaetMaria
+  extends Schema.SingleType {
+  collectionName: 'spiritualitaet_marias';
+  info: {
+    singularName: 'spiritualitaet-maria';
+    pluralName: 'spiritualitaet-marias';
+    displayName: 'spiritualitaet-maria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    maria: Attribute.Component<'content.title-text'>;
+    title: Attribute.String;
+    links: Attribute.Component<'content.links', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::spiritualitaet-maria.spiritualitaet-maria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::spiritualitaet-maria.spiritualitaet-maria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSpiritualitaetWeiheAnMariaUnd33SchritteSpiritualitaetWeiheAnMariaUnd33Schritte
+  extends Schema.SingleType {
+  collectionName: 'spiritualitaet_weihe_an_maria_und_33_schrittes';
+  info: {
+    singularName: 'spiritualitaet-weihe-an-maria-und-33-schritte';
+    pluralName: 'spiritualitaet-weihe-an-maria-und-33-schrittes';
+    displayName: 'galerie-weihe-an-maria-und-33-schritte';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.Component<'content.img-pdf-title', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::spiritualitaet-weihe-an-maria-und-33-schritte.spiritualitaet-weihe-an-maria-und-33-schritte',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::spiritualitaet-weihe-an-maria-und-33-schritte.spiritualitaet-weihe-an-maria-und-33-schritte',
       'oneToOne',
       'admin::user'
     > &
@@ -1552,7 +1659,10 @@ declare module '@strapi/types' {
       'api::presidium.presidium': ApiPresidiumPresidium;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
+      'api::spiritualitaet-ganzhingabe-jesus-durch-maria.spiritualitaet-ganzhingabe-jesus-durch-maria': ApiSpiritualitaetGanzhingabeJesusDurchMariaSpiritualitaetGanzhingabeJesusDurchMaria;
       'api::spiritualitaet-gebete.spiritualitaet-gebete': ApiSpiritualitaetGebeteSpiritualitaetGebete;
+      'api::spiritualitaet-maria.spiritualitaet-maria': ApiSpiritualitaetMariaSpiritualitaetMaria;
+      'api::spiritualitaet-weihe-an-maria-und-33-schritte.spiritualitaet-weihe-an-maria-und-33-schritte': ApiSpiritualitaetWeiheAnMariaUnd33SchritteSpiritualitaetWeiheAnMariaUnd33Schritte;
       'api::termine.termine': ApiTermineTermine;
       'api::unsere-spiritualitaet.unsere-spiritualitaet': ApiUnsereSpiritualitaetUnsereSpiritualitaet;
       'api::user-cart.user-cart': ApiUserCartUserCart;

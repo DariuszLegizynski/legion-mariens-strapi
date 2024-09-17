@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "spiritualitaet_ganzhingabe_jesus_durch_marias",
+  "info": {
+    "singularName": "spiritualitaet-ganzhingabe-jesus-durch-maria",
+    "pluralName": "spiritualitaet-ganzhingabe-jesus-durch-marias",
+    "displayName": "spiritualitaet-ganzhingabe-jesus-durch-maria",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "dedication": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.title-text"
+    }
+  }
+}

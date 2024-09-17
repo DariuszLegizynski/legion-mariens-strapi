@@ -21,9 +21,6 @@
     "newEndDate": {
       "type": "datetime"
     },
-    "uid": {
-      "type": "uid"
-    },
     "event": {
       "type": "relation",
       "relation": "manyToOne",

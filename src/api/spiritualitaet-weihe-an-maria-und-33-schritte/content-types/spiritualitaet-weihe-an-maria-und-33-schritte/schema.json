@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "spiritualitaet_weihe_an_maria_und_33_schrittes",
+  "info": {
+    "singularName": "spiritualitaet-weihe-an-maria-und-33-schritte",
+    "pluralName": "spiritualitaet-weihe-an-maria-und-33-schrittes",
+    "displayName": "galerie-weihe-an-maria-und-33-schritte",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.img-pdf-title"
+    }
+  }
+}

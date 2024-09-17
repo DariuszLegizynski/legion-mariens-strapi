@@ -1,8 +1,9 @@
 {
   "collectionName": "components_content_wrappers",
   "info": {
-    "displayName": "wrapper",
-    "icon": "bulletList"
+    "displayName": "prayer",
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {

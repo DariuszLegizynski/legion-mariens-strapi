@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_content_img_pdf_titles",
+  "info": {
+    "displayName": "ImgPdfTitle",
+    "icon": "server"
+  },
+  "options": {},
+  "attributes": {
+    "cover": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

@@ -62,6 +62,16 @@
       "relation": "oneToMany",
       "target": "api::event-exception.event-exception",
       "mappedBy": "event"
+    },
+    "participantRestriction": {
+      "type": "enumeration",
+      "enum": [
+        "Diese Veranstaltung ist ausschließlich für Legionäre",
+        "Diese Veranstaltung ist ausschließlich für Hilfslegionäre",
+        "Diese Veranstaltung ist ausschließlich für Legionäre und Hilfslegionäre",
+        "Diese Veranstaltung ist für alle"
+      ],
+      "required": true
     }
   }
 }
