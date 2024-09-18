@@ -60,43 +60,6 @@ export interface NavigationCategory extends Schema.Component {
   };
 }
 
-export interface ImagesThreeColumnsImages extends Schema.Component {
-  collectionName: 'components_images_three_columns_images';
-  info: {
-    displayName: 'threeColumnsImages';
-    icon: 'picture';
-  };
-  attributes: {
-    leftImage: Attribute.Media<'images' | 'files'>;
-    centerImage: Attribute.Media<'images' | 'files'>;
-    rightImage: Attribute.Media<'images' | 'files'>;
-  };
-}
-
-export interface ImagesThreeColumnImages extends Schema.Component {
-  collectionName: 'components_images_three_column_images';
-  info: {
-    displayName: 'threeColumnImages';
-    icon: 'picture';
-  };
-  attributes: {
-    leftImage: Attribute.Media<'images' | 'files'>;
-    centerImage: Attribute.Media<'images' | 'files'>;
-    rightImage: Attribute.Media<'images' | 'files'>;
-  };
-}
-
-export interface ImagesSingleImage extends Schema.Component {
-  collectionName: 'components_images_single_images';
-  info: {
-    displayName: 'singleImage';
-    icon: 'picture';
-  };
-  attributes: {
-    image: Attribute.Media<'images' | 'files'>;
-  };
-}
-
 export interface EventsDescription extends Schema.Component {
   collectionName: 'components_events_descriptions';
   info: {
@@ -198,6 +161,43 @@ export interface EventsAddresse extends Schema.Component {
   };
 }
 
+export interface ImagesThreeColumnsImages extends Schema.Component {
+  collectionName: 'components_images_three_columns_images';
+  info: {
+    displayName: 'threeColumnsImages';
+    icon: 'picture';
+  };
+  attributes: {
+    leftImage: Attribute.Media<'images' | 'files'>;
+    centerImage: Attribute.Media<'images' | 'files'>;
+    rightImage: Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface ImagesThreeColumnImages extends Schema.Component {
+  collectionName: 'components_images_three_column_images';
+  info: {
+    displayName: 'threeColumnImages';
+    icon: 'picture';
+  };
+  attributes: {
+    leftImage: Attribute.Media<'images' | 'files'>;
+    centerImage: Attribute.Media<'images' | 'files'>;
+    rightImage: Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface ImagesSingleImage extends Schema.Component {
+  collectionName: 'components_images_single_images';
+  info: {
+    displayName: 'singleImage';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Attribute.Media<'images' | 'files'>;
+  };
+}
+
 export interface ContentWrapper extends Schema.Component {
   collectionName: 'components_content_wrappers';
   info: {
@@ -224,7 +224,7 @@ export interface ContentTitle extends Schema.Component {
 export interface ContentTitleText extends Schema.Component {
   collectionName: 'components_content_title_texts';
   info: {
-    displayName: 'TitleText';
+    displayName: 'TitleContent';
     icon: 'file';
     description: '';
   };
@@ -235,6 +235,30 @@ export interface ContentTitleText extends Schema.Component {
         maxLength: 255;
       }>;
     content: Attribute.Blocks;
+  };
+}
+
+export interface ContentTitleImage extends Schema.Component {
+  collectionName: 'components_content_title_images';
+  info: {
+    displayName: 'TitleImage';
+    icon: 'bell';
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'videos'>;
+  };
+}
+
+export interface ContentTitleDescription extends Schema.Component {
+  collectionName: 'components_content_title_descriptions';
+  info: {
+    displayName: 'TitleDescription';
+    icon: 'feather';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
   };
 }
 
@@ -304,16 +328,18 @@ declare module '@strapi/types' {
       'order.ordered-item': OrderOrderedItem;
       'navigation.sub-category': NavigationSubCategory;
       'navigation.category': NavigationCategory;
-      'images.three-columns-images': ImagesThreeColumnsImages;
-      'images.three-column-images': ImagesThreeColumnImages;
-      'images.single-image': ImagesSingleImage;
       'events.description': EventsDescription;
       'events.cycle-event': EventsCycleEvent;
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
+      'images.three-columns-images': ImagesThreeColumnsImages;
+      'images.three-column-images': ImagesThreeColumnImages;
+      'images.single-image': ImagesSingleImage;
       'content.wrapper': ContentWrapper;
       'content.title': ContentTitle;
       'content.title-text': ContentTitleText;
+      'content.title-image': ContentTitleImage;
+      'content.title-description': ContentTitleDescription;
       'content.links': ContentLinks;
       'content.introduction': ContentIntroduction;
       'content.img-title-pdf': ContentImgTitlePdf;

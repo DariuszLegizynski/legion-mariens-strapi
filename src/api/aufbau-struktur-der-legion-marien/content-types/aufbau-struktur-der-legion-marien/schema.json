@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "aufbau_struktur_der_legion_mariens",
+  "info": {
+    "singularName": "aufbau-struktur-der-legion-marien",
+    "pluralName": "aufbau-struktur-der-legion-mariens",
+    "displayName": "aufbau-struktur-der-legion-marien",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "organigram": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.title-image"
+    },
+    "descriptions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.title-description"
+    }
+  }
+}

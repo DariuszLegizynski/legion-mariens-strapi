@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_title_descriptions",
+  "info": {
+    "displayName": "TitleDescription",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -861,6 +861,39 @@ export interface ApiApostolatApostolat extends Schema.SingleType {
   };
 }
 
+export interface ApiAufbauStrukturDerLegionMarienAufbauStrukturDerLegionMarien
+  extends Schema.SingleType {
+  collectionName: 'aufbau_struktur_der_legion_mariens';
+  info: {
+    singularName: 'aufbau-struktur-der-legion-marien';
+    pluralName: 'aufbau-struktur-der-legion-mariens';
+    displayName: 'aufbau-struktur-der-legion-marien';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    organigram: Attribute.Component<'content.title-image'>;
+    descriptions: Attribute.Component<'content.title-description', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aufbau-struktur-der-legion-marien.aufbau-struktur-der-legion-marien',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aufbau-struktur-der-legion-marien.aufbau-struktur-der-legion-marien',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -1711,6 +1744,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::apostolat.apostolat': ApiApostolatApostolat;
+      'api::aufbau-struktur-der-legion-marien.aufbau-struktur-der-legion-marien': ApiAufbauStrukturDerLegionMarienAufbauStrukturDerLegionMarien;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
       'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
