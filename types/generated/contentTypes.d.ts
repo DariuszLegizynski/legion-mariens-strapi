@@ -861,6 +861,39 @@ export interface ApiApostolatApostolat extends Schema.SingleType {
   };
 }
 
+export interface ApiAufbauLegionMariensInternationalAufbauLegionMariensInternational
+  extends Schema.SingleType {
+  collectionName: 'aufbau_legion_mariens_internationals';
+  info: {
+    singularName: 'aufbau-legion-mariens-international';
+    pluralName: 'aufbau-legion-mariens-internationals';
+    displayName: 'aufbau-legion-mariens-international';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    international: Attribute.Component<'content.title-text', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aufbau-legion-mariens-international.aufbau-legion-mariens-international',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aufbau-legion-mariens-international.aufbau-legion-mariens-international',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAufbauStrukturDerLegionMarienAufbauStrukturDerLegionMarien
   extends Schema.SingleType {
   collectionName: 'aufbau_struktur_der_legion_mariens';
@@ -1744,6 +1777,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::apostolat.apostolat': ApiApostolatApostolat;
+      'api::aufbau-legion-mariens-international.aufbau-legion-mariens-international': ApiAufbauLegionMariensInternationalAufbauLegionMariensInternational;
       'api::aufbau-struktur-der-legion-marien.aufbau-struktur-der-legion-marien': ApiAufbauStrukturDerLegionMarienAufbauStrukturDerLegionMarien;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;

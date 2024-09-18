@@ -15,9 +15,17 @@
     },
     "linkPath": {
       "type": "string",
-      "required": true,
+      "required": false,
       "maxLength": 255,
       "unique": false
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
     }
   }
 }

@@ -31,10 +31,10 @@ export interface NavigationSubCategory extends Schema.Component {
         maxLength: 255;
       }>;
     linkPath: Attribute.String &
-      Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
+    pdf: Attribute.Media<'files'>;
   };
 }
 
