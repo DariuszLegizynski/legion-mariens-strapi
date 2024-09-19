@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "galerie_radio_und_youtubes",
+  "info": {
+    "singularName": "galerie-radio-und-youtube",
+    "pluralName": "galerie-radio-und-youtubes",
+    "displayName": "galerie-radio-und-youtube",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ytTitle": {
+      "type": "string"
+    },
+    "youtube": {
+      "type": "component",
+      "repeatable": false,
+      "component": "navigation.sub-category"
+    },
+    "radios": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.sub-category"
+    },
+    "radioTitle": {
+      "type": "string"
+    }
+  }
+}

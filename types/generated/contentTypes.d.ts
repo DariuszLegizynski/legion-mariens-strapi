@@ -1150,6 +1150,73 @@ export interface ApiEventStateEventState extends Schema.CollectionType {
   };
 }
 
+export interface ApiGalerieGalerie extends Schema.SingleType {
+  collectionName: 'galeries';
+  info: {
+    singularName: 'galerie';
+    pluralName: 'galeries';
+    displayName: 'galerie';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'navigation.sub-category', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::galerie.galerie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::galerie.galerie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGalerieRadioUndYoutubeGalerieRadioUndYoutube
+  extends Schema.SingleType {
+  collectionName: 'galerie_radio_und_youtubes';
+  info: {
+    singularName: 'galerie-radio-und-youtube';
+    pluralName: 'galerie-radio-und-youtubes';
+    displayName: 'galerie-radio-und-youtube';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ytTitle: Attribute.String;
+    youtube: Attribute.Component<'navigation.sub-category'>;
+    radios: Attribute.Component<'navigation.sub-category', true>;
+    radioTitle: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::galerie-radio-und-youtube.galerie-radio-und-youtube',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::galerie-radio-und-youtube.galerie-radio-und-youtube',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGroupsInAustriaGroupsInAustria extends Schema.SingleType {
   collectionName: 'groups_in_austrias';
   info: {
@@ -1784,6 +1851,8 @@ declare module '@strapi/types' {
       'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
       'api::event-exception.event-exception': ApiEventExceptionEventException;
       'api::event-state.event-state': ApiEventStateEventState;
+      'api::galerie.galerie': ApiGalerieGalerie;
+      'api::galerie-radio-und-youtube.galerie-radio-und-youtube': ApiGalerieRadioUndYoutubeGalerieRadioUndYoutube;
       'api::groups-in-austria.groups-in-austria': ApiGroupsInAustriaGroupsInAustria;
       'api::header.header': ApiHeaderHeader;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;

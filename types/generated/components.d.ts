@@ -60,6 +60,43 @@ export interface NavigationCategory extends Schema.Component {
   };
 }
 
+export interface ImagesThreeColumnsImages extends Schema.Component {
+  collectionName: 'components_images_three_columns_images';
+  info: {
+    displayName: 'threeColumnsImages';
+    icon: 'picture';
+  };
+  attributes: {
+    leftImage: Attribute.Media<'images' | 'files'>;
+    centerImage: Attribute.Media<'images' | 'files'>;
+    rightImage: Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface ImagesThreeColumnImages extends Schema.Component {
+  collectionName: 'components_images_three_column_images';
+  info: {
+    displayName: 'threeColumnImages';
+    icon: 'picture';
+  };
+  attributes: {
+    leftImage: Attribute.Media<'images' | 'files'>;
+    centerImage: Attribute.Media<'images' | 'files'>;
+    rightImage: Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface ImagesSingleImage extends Schema.Component {
+  collectionName: 'components_images_single_images';
+  info: {
+    displayName: 'singleImage';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Attribute.Media<'images' | 'files'>;
+  };
+}
+
 export interface EventsDescription extends Schema.Component {
   collectionName: 'components_events_descriptions';
   info: {
@@ -158,43 +195,6 @@ export interface EventsAddresse extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-  };
-}
-
-export interface ImagesThreeColumnsImages extends Schema.Component {
-  collectionName: 'components_images_three_columns_images';
-  info: {
-    displayName: 'threeColumnsImages';
-    icon: 'picture';
-  };
-  attributes: {
-    leftImage: Attribute.Media<'images' | 'files'>;
-    centerImage: Attribute.Media<'images' | 'files'>;
-    rightImage: Attribute.Media<'images' | 'files'>;
-  };
-}
-
-export interface ImagesThreeColumnImages extends Schema.Component {
-  collectionName: 'components_images_three_column_images';
-  info: {
-    displayName: 'threeColumnImages';
-    icon: 'picture';
-  };
-  attributes: {
-    leftImage: Attribute.Media<'images' | 'files'>;
-    centerImage: Attribute.Media<'images' | 'files'>;
-    rightImage: Attribute.Media<'images' | 'files'>;
-  };
-}
-
-export interface ImagesSingleImage extends Schema.Component {
-  collectionName: 'components_images_single_images';
-  info: {
-    displayName: 'singleImage';
-    icon: 'picture';
-  };
-  attributes: {
-    image: Attribute.Media<'images' | 'files'>;
   };
 }
 
@@ -328,13 +328,13 @@ declare module '@strapi/types' {
       'order.ordered-item': OrderOrderedItem;
       'navigation.sub-category': NavigationSubCategory;
       'navigation.category': NavigationCategory;
+      'images.three-columns-images': ImagesThreeColumnsImages;
+      'images.three-column-images': ImagesThreeColumnImages;
+      'images.single-image': ImagesSingleImage;
       'events.description': EventsDescription;
       'events.cycle-event': EventsCycleEvent;
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
-      'images.three-columns-images': ImagesThreeColumnsImages;
-      'images.three-column-images': ImagesThreeColumnImages;
-      'images.single-image': ImagesSingleImage;
       'content.wrapper': ContentWrapper;
       'content.title': ContentTitle;
       'content.title-text': ContentTitleText;
