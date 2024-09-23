@@ -992,7 +992,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     >;
     endTime: Attribute.DateTime;
     arrival: Attribute.Component<'events.addresse'>;
-    description: Attribute.Component<'events.description'>;
+    description: Attribute.Text;
     repeat: Attribute.Component<'events.cycle-event'>;
     event_assignment: Attribute.Relation<
       'api::event.event',
@@ -1018,6 +1018,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
+    registration: Attribute.Component<'events.register'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1095,7 +1096,6 @@ export interface ApiEventExceptionEventException extends Schema.CollectionType {
     >;
     isExcluded: Attribute.Boolean & Attribute.DefaultTo<false>;
     newEventData: Attribute.Component<'events.addresse'>;
-    newDescription: Attribute.Component<'events.description'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

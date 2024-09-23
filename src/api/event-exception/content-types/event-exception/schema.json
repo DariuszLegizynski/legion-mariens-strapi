@@ -35,11 +35,6 @@
       "type": "component",
       "repeatable": false,
       "component": "events.addresse"
-    },
-    "newDescription": {
-      "type": "component",
-      "repeatable": false,
-      "component": "events.description"
     }
   }
 }

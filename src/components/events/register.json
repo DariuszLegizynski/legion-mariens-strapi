@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_events_registers",
+  "info": {
+    "displayName": "register",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "registrationDescription": {
+      "type": "text"
+    },
+    "isRegistration": {
+      "type": "boolean"
+    }
+  }
+}
