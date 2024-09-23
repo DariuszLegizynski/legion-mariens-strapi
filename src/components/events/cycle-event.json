@@ -9,14 +9,13 @@
   "attributes": {
     "recurrenceType": {
       "type": "enumeration",
-      "enum": [
-        "weekly",
-        "monthly",
-        "yearly"
-      ]
+      "enum": ["weekly", "monthly", "yearly"],
+      "required": false,
+      "default": null
     },
     "recurrenceEndDate": {
-      "type": "date"
+      "type": "date",
+      "required": false
     }
   }
 }

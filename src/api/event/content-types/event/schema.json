@@ -36,9 +36,7 @@
       "component": "events.addresse"
     },
     "description": {
-      "type": "component",
-      "repeatable": false,
-      "component": "events.description"
+      "type": "text"
     },
     "repeat": {
       "type": "component",
@@ -72,6 +70,11 @@
         "Diese Veranstaltung ist für alle"
       ],
       "required": true
+    },
+    "registration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.register"
     }
   }
 }

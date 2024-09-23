@@ -97,16 +97,15 @@ export interface ImagesSingleImage extends Schema.Component {
   };
 }
 
-export interface EventsDescription extends Schema.Component {
-  collectionName: 'components_events_descriptions';
+export interface EventsRegister extends Schema.Component {
+  collectionName: 'components_events_registers';
   info: {
-    displayName: 'Description';
-    icon: 'message';
+    displayName: 'register';
+    icon: 'discuss';
   };
   attributes: {
-    content: Attribute.Blocks;
-    registration: Attribute.Boolean & Attribute.DefaultTo<false>;
     registrationDescription: Attribute.Text;
+    isRegistration: Attribute.Boolean;
   };
 }
 
@@ -331,7 +330,7 @@ declare module '@strapi/types' {
       'images.three-columns-images': ImagesThreeColumnsImages;
       'images.three-column-images': ImagesThreeColumnImages;
       'images.single-image': ImagesSingleImage;
-      'events.description': EventsDescription;
+      'events.register': EventsRegister;
       'events.cycle-event': EventsCycleEvent;
       'events.categories': EventsCategories;
       'events.addresse': EventsAddresse;
