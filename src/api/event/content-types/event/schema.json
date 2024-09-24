@@ -75,6 +75,12 @@
       "type": "component",
       "repeatable": false,
       "component": "events.register"
+    },
+    "delete_event_request": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::delete-event-request.delete-event-request",
+      "inversedBy": "events"
     }
   }
 }
