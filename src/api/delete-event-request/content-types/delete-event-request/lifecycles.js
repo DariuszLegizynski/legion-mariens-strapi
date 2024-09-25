@@ -1,7 +1,6 @@
 module.exports = {
   async afterCreate(event) {
-    const { result, params } = event;
-    console.log({ result, params });
+    const { result } = event;
 
     const deleteEventRequest = await strapi.entityService.findOne(
       "api::delete-event-request.delete-event-request",
@@ -57,8 +56,6 @@ module.exports = {
   async beforeUpdate(event) {
     const { data, where } = event.params;
 
-    console.log({ data, where });
-
     // Fetch the current delete-event-request
     const deleteEventRequest = await strapi.entityService.findOne(
       "api::delete-event-request.delete-event-request",
@@ -68,11 +65,7 @@ module.exports = {
       }
     );
 
-    console.log({ deleteEventRequest });
-
-    const eventCreatedDate = new Date(
-      deleteEventRequest.createdAt
-    ).toDateString();
+    const eventCreatedDate = deleteEventRequest.createdAt.toString();
 
     // Check if the delete request is being approved
     if (data.isApproved === true && !deleteEventRequest.isApproved) {
@@ -89,11 +82,10 @@ module.exports = {
         await strapi.plugins["email"].services.email.send({
           to: data.userEmail,
           from: process.env.EMAIL_LEGION_MARIENS,
-          template_id: process.env.TEMPLATE_ORDER_MEMBER,
+          template_id: process.env.TEMPLATE_DELETE_REQUEST_APPROVE,
           dynamic_template_data: {
             title: deleteEventRequest.events[0].title,
             eventDate: eventCreatedDate.split("T")[0],
-            reason: data.reason,
           },
         });
       } catch (err) {
@@ -105,11 +97,10 @@ module.exports = {
         await strapi.plugins["email"].services.email.send({
           to: process.env.EMAIL_LEGION_MARIENS,
           from: process.env.EMAIL_LEGION_MARIENS,
-          template_id: process.env.TEMPLATE_ORDER_MEMBER,
+          template_id: process.env.TEMPLATE_DELETE_REQUEST_APPROVE,
           dynamic_template_data: {
             title: deleteEventRequest.events[0].title,
             eventDate: eventCreatedDate.split("T")[0],
-            reason: data.reason,
           },
         });
       } catch (err) {
@@ -124,9 +115,11 @@ module.exports = {
         await strapi.plugins["email"].services.email.send({
           to: data.userEmail,
           from: process.env.EMAIL_LEGION_MARIENS,
-          template_id: process.env.TEMPLATE_ORDER_MEMBER,
+          template_id: process.env.TEMPLATE_DELETE_REQUEST_REJECT,
           dynamic_template_data: {
             title: deleteEventRequest.events[0].title,
+            eventDate: eventCreatedDate.split("T")[0],
+            rejectReason: data.rejectReason,
           },
         });
       } catch (err) {
@@ -138,8 +131,12 @@ module.exports = {
         await strapi.plugins["email"].services.email.send({
           to: process.env.EMAIL_LEGION_MARIENS,
           from: process.env.EMAIL_LEGION_MARIENS,
-          subject: "Event Deletion Request Rejected",
-          text: `The request to delete the event '${deleteEventRequest.events[0].title}' has been approved.`,
+          template_id: process.env.TEMPLATE_DELETE_REQUEST_REJECT,
+          dynamic_template_data: {
+            title: deleteEventRequest.events[0].title,
+            eventDate: eventCreatedDate.split("T")[0],
+            rejectReason: data.rejectReason,
+          },
         });
       } catch (err) {
         strapi.log.error("Error sending email to admin", err);

@@ -1067,6 +1067,10 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'manyToOne',
       'api::delete-event-request.delete-event-request'
     >;
+    isAccepted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isRejected: Attribute.Boolean & Attribute.DefaultTo<false>;
+    rejectionDescription: Attribute.Text;
+    applicant: Attribute.Component<'events.applicant'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1180,6 +1184,7 @@ export interface ApiEventStateEventState extends Schema.CollectionType {
       'oneToMany',
       'api::event.event'
     >;
+    abbreviation: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

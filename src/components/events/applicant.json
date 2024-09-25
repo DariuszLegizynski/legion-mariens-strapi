@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_events_applicants",
+  "info": {
+    "displayName": "applicant",
+    "icon": "information",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

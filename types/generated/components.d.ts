@@ -153,6 +153,20 @@ export interface EventsCategories extends Schema.Component {
   };
 }
 
+export interface EventsApplicant extends Schema.Component {
+  collectionName: 'components_events_applicants';
+  info: {
+    displayName: 'applicant';
+    icon: 'information';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    surname: Attribute.String;
+    email: Attribute.Email;
+  };
+}
+
 export interface EventsAddresse extends Schema.Component {
   collectionName: 'components_content_addresses';
   info: {
@@ -333,6 +347,7 @@ declare module '@strapi/types' {
       'events.register': EventsRegister;
       'events.cycle-event': EventsCycleEvent;
       'events.categories': EventsCategories;
+      'events.applicant': EventsApplicant;
       'events.addresse': EventsAddresse;
       'content.wrapper': ContentWrapper;
       'content.title': ContentTitle;
