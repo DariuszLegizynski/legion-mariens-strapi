@@ -967,6 +967,49 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiDeleteEventRequestDeleteEventRequest
+  extends Schema.CollectionType {
+  collectionName: 'delete_event_requests';
+  info: {
+    singularName: 'delete-event-request';
+    pluralName: 'delete-event-requests';
+    displayName: 'delete-event-request';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    events: Attribute.Relation<
+      'api::delete-event-request.delete-event-request',
+      'oneToMany',
+      'api::event.event'
+    >;
+    userEmail: Attribute.Email;
+    isApproved: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isRejected: Attribute.Boolean & Attribute.DefaultTo<false>;
+    reason: Attribute.Text;
+    name: Attribute.String;
+    surname: Attribute.String;
+    rejectReason: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::delete-event-request.delete-event-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::delete-event-request.delete-event-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEventEvent extends Schema.CollectionType {
   collectionName: 'events';
   info: {
@@ -1019,6 +1062,15 @@ export interface ApiEventEvent extends Schema.CollectionType {
     > &
       Attribute.Required;
     registration: Attribute.Component<'events.register'>;
+    delete_event_request: Attribute.Relation<
+      'api::event.event',
+      'manyToOne',
+      'api::delete-event-request.delete-event-request'
+    >;
+    isAccepted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isRejected: Attribute.Boolean & Attribute.DefaultTo<false>;
+    rejectionDescription: Attribute.Text;
+    applicant: Attribute.Component<'events.applicant'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1132,6 +1184,7 @@ export interface ApiEventStateEventState extends Schema.CollectionType {
       'oneToMany',
       'api::event.event'
     >;
+    abbreviation: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1847,6 +1900,7 @@ declare module '@strapi/types' {
       'api::aufbau-legion-mariens-international.aufbau-legion-mariens-international': ApiAufbauLegionMariensInternationalAufbauLegionMariensInternational;
       'api::aufbau-struktur-der-legion-marien.aufbau-struktur-der-legion-marien': ApiAufbauStrukturDerLegionMarienAufbauStrukturDerLegionMarien;
       'api::category.category': ApiCategoryCategory;
+      'api::delete-event-request.delete-event-request': ApiDeleteEventRequestDeleteEventRequest;
       'api::event.event': ApiEventEvent;
       'api::event-assignment.event-assignment': ApiEventAssignmentEventAssignment;
       'api::event-exception.event-exception': ApiEventExceptionEventException;

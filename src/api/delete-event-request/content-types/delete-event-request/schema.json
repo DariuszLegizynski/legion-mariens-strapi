@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delete_event_requests",
+  "info": {
+    "singularName": "delete-event-request",
+    "pluralName": "delete-event-requests",
+    "displayName": "delete-event-request",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "delete_event_request"
+    },
+    "userEmail": {
+      "type": "email"
+    },
+    "isApproved": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRejected": {
+      "type": "boolean",
+      "default": false
+    },
+    "reason": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "rejectReason": {
+      "type": "text"
+    }
+  }
+}

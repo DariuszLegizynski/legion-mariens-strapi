@@ -20,6 +20,9 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "event_state"
+    },
+    "abbreviation": {
+      "type": "string"
     }
   }
 }

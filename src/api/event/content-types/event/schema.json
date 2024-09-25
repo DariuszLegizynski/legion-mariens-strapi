@@ -75,6 +75,29 @@
       "type": "component",
       "repeatable": false,
       "component": "events.register"
+    },
+    "delete_event_request": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::delete-event-request.delete-event-request",
+      "inversedBy": "events"
+    },
+    "isAccepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRejected": {
+      "type": "boolean",
+      "default": false
+    },
+    "rejectionDescription": {
+      "type": "text"
+    },
+    "applicant": {
+      "displayName": "applicant",
+      "type": "component",
+      "repeatable": false,
+      "component": "events.applicant"
     }
   }
 }
