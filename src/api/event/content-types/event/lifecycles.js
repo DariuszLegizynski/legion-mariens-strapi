@@ -2,6 +2,8 @@ module.exports = {
   async afterCreate(event) {
     const { result } = event;
 
+    console.log({ result });
+
     const populatedEvent = await strapi.db.query("api::event.event").findOne({
       where: { id: result.id },
       populate: {
@@ -55,10 +57,10 @@ module.exports = {
   ////////////////////////////////////////////////
   // Lifecycle for updating an event
   async beforeUpdate(event) {
-    const { data } = event.params;
+    const { data, where } = event.params;
 
     const populatedEvent = await strapi.db.query("api::event.event").findOne({
-      where: { id: data.id },
+      where: { id: where.id },
       populate: {
         applicant: true,
       },
