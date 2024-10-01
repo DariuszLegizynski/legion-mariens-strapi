@@ -2,8 +2,6 @@ module.exports = {
   async afterCreate(event) {
     const { result } = event;
 
-    console.log({ result });
-
     const populatedEvent = await strapi.db.query("api::event.event").findOne({
       where: { id: result.id },
       populate: {
