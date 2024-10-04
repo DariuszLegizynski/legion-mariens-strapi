@@ -76,12 +76,6 @@
       "repeatable": false,
       "component": "events.register"
     },
-    "delete_event_request": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::delete-event-request.delete-event-request",
-      "inversedBy": "events"
-    },
     "isAccepted": {
       "type": "boolean",
       "default": false
@@ -98,6 +92,12 @@
       "type": "component",
       "repeatable": false,
       "component": "events.applicant"
+    },
+    "event_delete_request": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event-delete-request.event-delete-request",
+      "inversedBy": "events"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "delete_event_requests",
+  "collectionName": "event_delete_requests",
   "info": {
-    "singularName": "delete-event-request",
-    "pluralName": "delete-event-requests",
-    "displayName": "delete-event-request",
+    "singularName": "event-delete-request",
+    "pluralName": "event-delete-requests",
+    "displayName": "Event-Delete-Request",
     "description": ""
   },
   "options": {
@@ -16,18 +16,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event",
-      "mappedBy": "delete_event_request"
+      "mappedBy": "event_delete_request"
     },
     "userEmail": {
       "type": "email"
     },
     "isApproved": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "isRejected": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "reason": {
       "type": "text"
