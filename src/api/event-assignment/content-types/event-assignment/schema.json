@@ -20,6 +20,12 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "event_assignment"
+    },
+    "event_exceptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-exception.event-exception",
+      "mappedBy": "event_assignment"
     }
   }
 }

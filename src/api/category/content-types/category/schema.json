@@ -22,6 +22,12 @@
       "relation": "manyToMany",
       "target": "api::event.event",
       "mappedBy": "categories"
+    },
+    "event_exceptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event-exception.event-exception",
+      "mappedBy": "categories"
     }
   }
 }

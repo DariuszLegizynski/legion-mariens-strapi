@@ -12,13 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "exceptionDate": {
       "type": "date"
     },
-    "newStartDate": {
+    "startTime": {
       "type": "datetime"
     },
-    "newEndDate": {
+    "endTime": {
       "type": "datetime"
     },
     "event": {
@@ -31,10 +34,71 @@
       "type": "boolean",
       "default": false
     },
-    "newEventData": {
+    "arrival": {
       "type": "component",
       "repeatable": false,
       "component": "events.addresse"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "event_exceptions"
+    },
+    "description": {
+      "type": "text"
+    },
+    "repeat": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.cycle-event"
+    },
+    "event_assignment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event-assignment.event-assignment",
+      "inversedBy": "event_exceptions"
+    },
+    "event_state": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event-state.event-state",
+      "inversedBy": "event_exceptions"
+    },
+    "participantRestriction": {
+      "type": "enumeration",
+      "enum": [
+        "Diese Veranstaltung ist ausschließlich für Legionäre",
+        "Diese Veranstaltung ist ausschließlich für Hilfslegionäre",
+        "Diese Veranstaltung ist ausschließlich für Legionäre und Hilfslegionäre",
+        "Diese Veranstaltung ist für alle"
+      ],
+      "required": true
+    },
+    "registration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.register"
+    },
+    "isAccepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRejected": {
+      "type": "boolean",
+      "default": false
+    },
+    "rejectionDescription": {
+      "type": "text"
+    },
+    "applicant": {
+      "displayName": "applicant",
+      "type": "component",
+      "repeatable": false,
+      "component": "events.applicant"
+    },
+    "occurrenceId": {
+      "type": "uid"
     }
   }
 }

@@ -23,6 +23,12 @@
     },
     "abbreviation": {
       "type": "string"
+    },
+    "event_exceptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-exception.event-exception",
+      "mappedBy": "event_state"
     }
   }
 }

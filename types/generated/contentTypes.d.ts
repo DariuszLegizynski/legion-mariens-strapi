@@ -949,6 +949,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::event.event'
     >;
+    event_exceptions: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::event-exception.event-exception'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1065,6 +1070,11 @@ export interface ApiEventAssignmentEventAssignment
       'oneToMany',
       'api::event.event'
     >;
+    event_exceptions: Attribute.Relation<
+      'api::event-assignment.event-assignment',
+      'oneToMany',
+      'api::event-exception.event-exception'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1138,16 +1148,49 @@ export interface ApiEventExceptionEventException extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    title: Attribute.String;
     exceptionDate: Attribute.Date;
-    newStartDate: Attribute.DateTime;
-    newEndDate: Attribute.DateTime;
+    startTime: Attribute.DateTime;
+    endTime: Attribute.DateTime;
     event: Attribute.Relation<
       'api::event-exception.event-exception',
       'manyToOne',
       'api::event.event'
     >;
     isExcluded: Attribute.Boolean & Attribute.DefaultTo<false>;
-    newEventData: Attribute.Component<'events.addresse'>;
+    arrival: Attribute.Component<'events.addresse'>;
+    categories: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'manyToMany',
+      'api::category.category'
+    >;
+    description: Attribute.Text;
+    repeat: Attribute.Component<'events.cycle-event'>;
+    event_assignment: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'manyToOne',
+      'api::event-assignment.event-assignment'
+    >;
+    event_state: Attribute.Relation<
+      'api::event-exception.event-exception',
+      'manyToOne',
+      'api::event-state.event-state'
+    >;
+    participantRestriction: Attribute.Enumeration<
+      [
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Legion\u00E4re',
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Hilfslegion\u00E4re',
+        'Diese Veranstaltung ist ausschlie\u00DFlich f\u00FCr Legion\u00E4re und Hilfslegion\u00E4re',
+        'Diese Veranstaltung ist f\u00FCr alle'
+      ]
+    > &
+      Attribute.Required;
+    registration: Attribute.Component<'events.register'>;
+    isAccepted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isRejected: Attribute.Boolean & Attribute.DefaultTo<false>;
+    rejectionDescription: Attribute.Text;
+    applicant: Attribute.Component<'events.applicant'>;
+    occurrenceId: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1185,6 +1228,11 @@ export interface ApiEventStateEventState extends Schema.CollectionType {
       'api::event.event'
     >;
     abbreviation: Attribute.String;
+    event_exceptions: Attribute.Relation<
+      'api::event-state.event-state',
+      'oneToMany',
+      'api::event-exception.event-exception'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
