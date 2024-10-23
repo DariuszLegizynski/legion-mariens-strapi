@@ -40,13 +40,17 @@
       "type": "string"
     },
     "legion": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "zip": {
       "type": "string"
     },
     "land": {
       "type": "string"
+    },
+    "orderId": {
+      "type": "uid"
     }
   }
 }

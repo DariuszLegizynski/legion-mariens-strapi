@@ -1465,9 +1465,10 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     orderItemList: Attribute.Component<'order.ordered-item', true>;
     address: Attribute.String;
     place: Attribute.String;
-    legion: Attribute.String;
+    legion: Attribute.String & Attribute.Required;
     zip: Attribute.String;
     land: Attribute.String;
+    orderId: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
