@@ -67,6 +67,14 @@ module.exports = {
     const applicant = populatedEvent.applicant;
 
     if (data.isAccepted === true) {
+      // Unpublish the old version
+      await strapi.db.query("api::event.event").update({
+        where: { id: where.id },
+        data: {
+          publishedAt: null, // Unpublish old event
+        },
+      });
+
       // Send email to user
       try {
         await strapi.plugins["email"].services.email.send({
