@@ -1283,6 +1283,37 @@ export interface ApiGalerieGalerie extends Schema.SingleType {
   };
 }
 
+export interface ApiGalerieMediathekGalerieMediathek
+  extends Schema.CollectionType {
+  collectionName: 'galerie_mediatheks';
+  info: {
+    singularName: 'galerie-mediathek';
+    pluralName: 'galerie-mediatheks';
+    displayName: 'galerie-mediathek';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    links: Attribute.Component<'content.title', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::galerie-mediathek.galerie-mediathek',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::galerie-mediathek.galerie-mediathek',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGalerieRadioUndYoutubeGalerieRadioUndYoutube
   extends Schema.SingleType {
   collectionName: 'galerie_radio_und_youtubes';
@@ -1297,7 +1328,7 @@ export interface ApiGalerieRadioUndYoutubeGalerieRadioUndYoutube
   };
   attributes: {
     ytTitle: Attribute.String;
-    youtube: Attribute.Component<'navigation.sub-category'>;
+    youtube: Attribute.Component<'navigation.sub-category', true>;
     radios: Attribute.Component<'navigation.sub-category', true>;
     radioTitle: Attribute.String;
     createdAt: Attribute.DateTime;
@@ -1955,6 +1986,7 @@ declare module '@strapi/types' {
       'api::event-exception.event-exception': ApiEventExceptionEventException;
       'api::event-state.event-state': ApiEventStateEventState;
       'api::galerie.galerie': ApiGalerieGalerie;
+      'api::galerie-mediathek.galerie-mediathek': ApiGalerieMediathekGalerieMediathek;
       'api::galerie-radio-und-youtube.galerie-radio-und-youtube': ApiGalerieRadioUndYoutubeGalerieRadioUndYoutube;
       'api::groups-in-austria.groups-in-austria': ApiGroupsInAustriaGroupsInAustria;
       'api::header.header': ApiHeaderHeader;

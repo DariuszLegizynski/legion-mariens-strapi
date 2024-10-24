@@ -17,7 +17,7 @@
     },
     "youtube": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "navigation.sub-category"
     },
     "radios": {
