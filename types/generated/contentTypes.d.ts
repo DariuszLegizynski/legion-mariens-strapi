@@ -1691,6 +1691,38 @@ export interface ApiProductCategoryProductCategory
   };
 }
 
+export interface ApiReginaLegionisReginaLegionis extends Schema.SingleType {
+  collectionName: 'reginae_legionis';
+  info: {
+    singularName: 'regina-legionis';
+    pluralName: 'reginae-legionis';
+    displayName: 'regina-legionis';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    reginae: Attribute.Component<'content.img-pdf-title', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::regina-legionis.regina-legionis',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::regina-legionis.regina-legionis',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSpiritualitaetGanzhingabeJesusDurchMariaSpiritualitaetGanzhingabeJesusDurchMaria
   extends Schema.SingleType {
   collectionName: 'spiritualitaet_ganzhingabe_jesus_durch_marias';
@@ -1997,6 +2029,7 @@ declare module '@strapi/types' {
       'api::presidium.presidium': ApiPresidiumPresidium;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
+      'api::regina-legionis.regina-legionis': ApiReginaLegionisReginaLegionis;
       'api::spiritualitaet-ganzhingabe-jesus-durch-maria.spiritualitaet-ganzhingabe-jesus-durch-maria': ApiSpiritualitaetGanzhingabeJesusDurchMariaSpiritualitaetGanzhingabeJesusDurchMaria;
       'api::spiritualitaet-gebete.spiritualitaet-gebete': ApiSpiritualitaetGebeteSpiritualitaetGebete;
       'api::spiritualitaet-legionsbild.spiritualitaet-legionsbild': ApiSpiritualitaetLegionsbildSpiritualitaetLegionsbild;

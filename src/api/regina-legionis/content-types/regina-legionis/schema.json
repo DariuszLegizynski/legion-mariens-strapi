@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "reginae_legionis",
+  "info": {
+    "singularName": "regina-legionis",
+    "pluralName": "reginae-legionis",
+    "displayName": "regina-legionis",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "reginae": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.img-pdf-title"
+    }
+  }
+}
